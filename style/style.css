@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Jersey';
+  src: url('Jersey15Charted-Regular.ttf') format('truetype');
+}
+
+:root {
+  --first-font: 'Jersey', sans-serif;
+}
+
+html {
+  font-family: var(--first-font);
+}
+
+#main{	
+	padding: 10px;
+
+}
+
+
+#header{color:red
+
+}
+
+
+#title{
+	color:red;
+	font-size: 4em;
+}
+
+
+.category{
+	padding-right:30px;
+}
+
+#categories{
+	border: 20px solid green;
+	top: 0px;
+	right: 0px;
+	position: fixed;
+}
+
+
+#footer{
+	color:red;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+	border: 20px solid white;
+}
+
+
+#content{
+	background-color:green;
+	color:red;
+	margin: 0 auto;
+	width: 50%;
+}
+
+
+
+#one_container{
+  width: 100%;
+      margin: 0 auto; /* Centering the container horizontally */
+      display: flex;
+      justify-content: space-between;
+}
+#one_text{
+    width: 49%; /* Adjust width as needed */
+      border: 1px solid black;}
+#one_pics{
+    width: 49%; /* Adjust width as needed */
+      border: 1px solid black;
+
+}
+
+
+#two_container{
+}
+#two_text{
+}
+#two_pics{
+
+
+
+#three_container{
+}
+#two_text{
+}
+#two_pics{
+
+
+
+.three_container{
+}
+.two_text{
+}
+.two_pics{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
