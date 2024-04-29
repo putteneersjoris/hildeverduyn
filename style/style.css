@@ -23,8 +23,11 @@ html {
 
 
 #title{
-	color:red;
 	font-size: 4em;
+	color:red;
+	position: fixed;
+	top: 0px;
+	left: 0px;
 }
 
 
@@ -57,37 +60,56 @@ html {
 	width: 50%;
 }
 
+/* two :vertical stack */
 
-
-#one_container{
-  width: 100%;
-      margin: 0 auto; /* Centering the container horizontally */
-      display: flex;
-      justify-content: space-between;
-}
-#one_text{
-    width: 49%; /* Adjust width as needed */
-      border: 1px solid black;}
-#one_pics{
-    width: 49%; /* Adjust width as needed */
-      border: 1px solid black;
-
+.one_container{
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
 }
 
-
-#two_container{
+.one_text{
+	width: 45%;
+	background-color:yellow;
 }
-#two_text{
+
+.one_pics{
+	width: 45%;
+	background-color:pink;
 }
-#two_pics{
+
+.one_pic{
+	width: 45%;
+}
+
+
+/* two :vertical stack */
+
+.two_container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.two_text,
+.two_pics {
+    width: 100%; 
+    background-color: pink;
+    margin-bottom: 20px;
+}
+
+.two_pic{
+	width: 100%;
+}
 
 
 
-#three_container{
+
+.three_container{
 }
-#two_text{
+.two_text{
 }
-#two_pics{
+.two_pics{
 
 
 

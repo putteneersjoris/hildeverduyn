@@ -1,6 +1,5 @@
 import data from './content.js'
 
-
 const title = data.title.text
 const footer = data.footer.text
 
@@ -11,41 +10,116 @@ const CATEGORIES = document.getElementById('categories')
 const CONTENT = document.getElementById('content')
 const FOOTER = document.getElementById('footer')
 
+const ALT = 'airbnb and bed and breakfast in eeklo. Belgium'
+
+function block_one(content, images){
+	const one_container = document.createElement('div')
+	const one_text = document.createElement('div')
+	const one_title_text = document.createElement('div')
+	const one_content_text = document.createElement('div')
+	const one_pics = document.createElement('div')
+	const one_title_pics = document.createElement('div')
+	const one_content_pics = document.createElement('div')
+
+	one_container.classList.add('one_container')
+	one_text.classList.add('one_text')
+	one_title_text.classList.add('one_title_text')
+	one_content_text.classList.add('one_content_text')
+	one_content_text.innerHTML = content
+	one_pics.classList.add('one_pics')
+	one_title_pics.classList.add('one_title_pics')
+	one_content_pics.classList.add('one_content_pics')
+
+	for(const image of images){
+		let one_pic = document.createElement('img')	
+		one_pic.src = image
+		one_pic.alt = ALT
+		one_pic.classList.add('one_pic')
+		one_content_pics.appendChild(one_pic)
+	}
+	
+	one_text.appendChild(one_title_text)
+	one_text.appendChild(one_content_text)
+	one_pics.appendChild(one_title_pics)
+	one_pics.appendChild(one_content_pics)
+	one_container.appendChild(one_text)
+	one_container.appendChild(one_pics)
+	
+	return one_container
+
+	//`
+	//<div id="one_container">
+	//	<div id="one_text">
+	//		<h2>Div 1</h2>
+	//		<p>`+ content +`</p>
+	//	</div>
+	//	<div id="one_pics">
+	//		<h2>Div 2</h2>
+	//		<p>` + image_block + `</p>
+	//	</div>
+	//</div>`
+
+}
+
+
+
+function block_two(content, images){
+	const two_container = document.createElement('div')
+	const two_text = document.createElement('div')
+	const two_title_text = document.createElement('div')
+	const two_content_text = document.createElement('div')
+	const two_pics = document.createElement('div')
+	const two_title_pics = document.createElement('div')
+	const two_content_pics = document.createElement('div')
+
+	two_container.classList.add('two_container')
+	two_text.classList.add('two_text')
+	two_title_text.classList.add('two_title_text')
+	two_content_text.classList.add('two_content_text')
+	two_content_text.innerHTML = content
+	two_pics.classList.add('two_pics')
+	two_title_pics.classList.add('two_title_pics')
+	two_content_pics.classList.add('two_content_pics')
+
+	for(const image of images){
+		let two_pic = document.createElement('img')	
+		two_pic.src = image
+		two_pic.alt = ALT
+		two_pic.classList.add('two_pic')
+		two_content_pics.appendChild(two_pic)
+	}
+	
+	two_text.appendChild(two_title_text)
+	two_text.appendChild(two_content_text)
+	two_pics.appendChild(two_title_pics)
+	two_pics.appendChild(two_content_pics)
+	two_container.appendChild(two_text)
+	two_container.appendChild(two_pics)
+	
+	return two_container
+
+
+}
 
 
 function div_block(content, mode, images) {
-	let block = '';
-
+ 
+	let block
+	
 	if (parseInt(mode) === 1) {
-
-
-		let image_block = '';
-		for(const image of images){
-			image_block += `<img src=` +image + ` alt='airbnb and bed and breakfast in eeklo. Belgium'><br>`
-			console.log(image)
-		}
-		
-		block = `<div id="one_container">
-			 <div id="one_text">
-			 <h2>Div 1</h2>
-			 <p>` + content + `</p>
-			 </div>
-			 <div id="one_pics">
-			 <h2>Div 2</h2>
-			 <p>` + image_block + `</p>
-			 </div>
-			 </div>
-			`
-
+		block = block_one(content, images)	
 	} 
 
 
 	if (parseInt(mode) === 2) {
-		block = '<div>' + content + '</div>';
+		block = block_two(content, images)	
 	}
 	
 	if (parseInt(mode) === 3) {
-		block = '<section>' + content + '</section>';
+		const two_container = document.createElement('div')
+		two_container.id = 'two_container'
+		two_container.innerHTML = content 
+
 	}
 
 	return block;
@@ -71,10 +145,11 @@ export function initial_content(){
 		span_category.style.border = '1px solid red'
 
 		//content divs
-		const div_content = document.createElement('div')
-		div_content.innerHTML = div_block( data.categories[category].content, data.categories[category].mode, data.categories[category].images)
-		CONTENT.appendChild(div_content)
-		console.log(data.categories[category].images)
+		const content = data.categories[category].content
+		const mode = data.categories[category].mode
+		const images  = data.categories[category].images
+		
+		CONTENT.appendChild(div_block(content , mode , images))
 	
 	}
 
