@@ -12,117 +12,126 @@ const FOOTER = document.getElementById('footer')
 
 const ALT = 'airbnb and bed and breakfast in eeklo. Belgium'
 
-function block_one(content, images){
-	const one_container = document.createElement('div')
-	const one_text = document.createElement('div')
-	const one_title_text = document.createElement('div')
-	const one_content_text = document.createElement('div')
-	const one_pics = document.createElement('div')
-	const one_title_pics = document.createElement('div')
-	const one_content_pics = document.createElement('div')
+const array_categories = Object.keys(data.categories)
+const n_keys_categories = array_categories.length
 
-	one_container.classList.add('one_container')
-	one_text.classList.add('one_text')
-	one_title_text.classList.add('one_title_text')
-	one_content_text.classList.add('one_content_text')
-	one_content_text.innerHTML = content
-	one_pics.classList.add('one_pics')
-	one_title_pics.classList.add('one_title_pics')
-	one_content_pics.classList.add('one_content_pics')
+let next_or_prev_id= ''
+let current_category = ''
 
-	for(const image of images){
-		let one_pic = document.createElement('img')	
-		one_pic.src = image
-		one_pic.alt = ALT
-		one_pic.classList.add('one_pic')
-		one_content_pics.appendChild(one_pic)
+function prev_or_next_category(prev_or_next){
+	let current_category_id =array_categories.indexOf(current_category)
+	if(prev_or_next=='prev'){
+		next_or_prev_id = array_categories[(current_category_id + (n_keys_categories-1)) % n_keys_categories]
 	}
 	
-	one_text.appendChild(one_title_text)
-	one_text.appendChild(one_content_text)
-	one_pics.appendChild(one_title_pics)
-	one_pics.appendChild(one_content_pics)
-	one_container.appendChild(one_text)
-	one_container.appendChild(one_pics)
-	
-	return one_container
+	if(prev_or_next=='next'){
+		next_or_prev_id = array_categories[(current_category_id + 1) % n_keys_categories]
+	}
 
-	//`
-	//<div id="one_container">
-	//	<div id="one_text">
-	//		<h2>Div 1</h2>
-	//		<p>`+ content +`</p>
-	//	</div>
-	//	<div id="one_pics">
-	//		<h2>Div 2</h2>
-	//		<p>` + image_block + `</p>
-	//	</div>
-	//</div>`
-
+	document.getElementById(next_or_prev_id).click();
+	current_category = next_or_prev_id
 }
 
 
+function div_begin(){
+	const begin = document.createElement('div')
+	begin.id = 'begin'
+	begin.innerHTML = 'begin testing'
+	return begin
+}
 
-function block_two(content, images){
-	const two_container = document.createElement('div')
-	const two_text = document.createElement('div')
-	const two_title_text = document.createElement('div')
-	const two_content_text = document.createElement('div')
-	const two_pics = document.createElement('div')
-	const two_title_pics = document.createElement('div')
-	const two_content_pics = document.createElement('div')
+function div_end(){
+	const end = document.createElement('div')
+	end.id = 'end'
 
-	two_container.classList.add('two_container')
-	two_text.classList.add('two_text')
-	two_title_text.classList.add('two_title_text')
-	two_content_text.classList.add('two_content_text')
-	two_content_text.innerHTML = content
-	two_pics.classList.add('two_pics')
-	two_title_pics.classList.add('two_title_pics')
-	two_content_pics.classList.add('two_content_pics')
-
-	for(const image of images){
-		let two_pic = document.createElement('img')	
-		two_pic.src = image
-		two_pic.alt = ALT
-		two_pic.classList.add('two_pic')
-		two_content_pics.appendChild(two_pic)
-	}
-	
-	two_text.appendChild(two_title_text)
-	two_text.appendChild(two_content_text)
-	two_pics.appendChild(two_title_pics)
-	two_pics.appendChild(two_content_pics)
-	two_container.appendChild(two_text)
-	two_container.appendChild(two_pics)
-	
-	return two_container
-
-
+	const button_next = document.createElement('button')
+	button_next.innerHTML =  '<span>next</span>'
+	const button_previous = document.createElement('button')
+	button_previous.innerHTML =  '<span>previous</span>'
+	button_previous.onclick = function(){prev_or_next_category('prev')}
+	button_next.onclick = function(){prev_or_next_category('next')}
+	end.appendChild(button_previous)
+	end.appendChild(button_next)
+	return end
 }
 
 
-function div_block(content, mode, images) {
- 
-	let block
+function block(id, content, mode, images, order){
+	const container = document.createElement('div')
+	const text = document.createElement('div')
+	const title_text = document.createElement('div')
+	const content_text = document.createElement('div')
+	const pics = document.createElement('div')
+	const title_pics = document.createElement('div')
+	const content_pics = document.createElement('div')
+
+	container.classList.add('container' + '_' + mode)
+	container.id = id
+	text.classList.add('text' + '_' + mode)
+	title_text.classList.add('title_text' + '_' + mode)
+	content_text.classList.add('content_text' + '_' + mode)
+	content_text.innerHTML = content
+	pics.classList.add('pics' + '_' + mode)
+	title_pics.classList.add('title_pics' + '_' + mode)
+	content_pics.classList.add('content_pics' + '_' + mode)
 	
-	if (parseInt(mode) === 1) {
-		block = block_one(content, images)	
-	} 
+	//select all butons and set underline to none 
+	const buttons = document.querySelectorAll('button');
+
+	buttons.forEach(button => {
+	  button.style.textDecoration = 'none';
+	});
+	document.getElementById(id).style.textDecoration='underline'
 
 
-	if (parseInt(mode) === 2) {
-		block = block_two(content, images)	
+	for(const image of images){
+		let pic = document.createElement('img')	
+		pic.src = image
+		pic.alt = ALT
+		pic.classList.add('pic' + '_' + mode)
+		if(mode == 'vertical'){pic.style.width = '100%'}
+		if(mode == 'horizontal'){pic.style.width = '100%'}
+		content_pics.appendChild(pic)
 	}
 	
-	if (parseInt(mode) === 3) {
-		const two_container = document.createElement('div')
-		two_container.id = 'two_container'
-		two_container.innerHTML = content 
+	//vertical split
+	if(mode == 'vertical'){
+		container.style.width = '100%';
+		container.style.margin = '0 auto';
+		container.style.display = 'flex';
+		container.style.justifyContent = 'space-between';
 
+		text.style.width = '30%';
+		text.style.order = order;
+		pics.style.width = '65%';
 	}
+		
+	//horizontal split
+	if(mode == 'horizontal'){
+		container.style.width = '100%';
+		container.style.margin = '0 auto';
 
-	return block;
+		pics.style.width = '100%';
+		pics.style.marginBottom = '20px';
+		
+		text.style.width = '100%';
+		text.style.marginBottom = '20px';
+		text.style.order = order;
+	}
+	
+	text.appendChild(title_text)
+	text.appendChild(content_text)
+	pics.appendChild(title_pics)
+	pics.appendChild(content_pics)
+	container.appendChild(text)
+	container.appendChild(pics)
+
+	CONTENT.innerHTML = ''
+	CONTENT.appendChild(div_begin())
+	CONTENT.appendChild(container)
+	CONTENT.appendChild(div_end())
+
+	current_category=id
 }
 
 
@@ -134,40 +143,38 @@ export function initial_content(){
 	FOOTER.innerHTML = footer + '-' + new Date().getFullYear()
 	
 	//constuct the categories
+
+	
 	for(const category in data.categories){
-		const span_category = document.createElement('span')
-		span_category.innerHTML = data.categories[category].text
-		span_category.id = data.categories[category].id
-		span_category.className = 'category' 
-		
-		CATEGORIES.appendChild(span_category)
-
-		span_category.style.border = '1px solid red'
-
+	
 		//content divs
+		const id = data.categories[category].id
 		const content = data.categories[category].content
 		const mode = data.categories[category].mode
 		const images  = data.categories[category].images
-		
-		CONTENT.appendChild(div_block(content , mode , images))
+		const order  = data.categories[category].order
 	
+		//categories
+		const button_category = document.createElement('button')
+		button_category.innerHTML = data.categories[category].text
+		button_category.onclick = function(){block( id, content , mode , images, order)}
+		button_category.className = 'category' 
+		button_category.id = id
+		CATEGORIES.appendChild(button_category)
 	}
 
 	// initial styling
-
-//	MAIN.style.border = '3px solid green'
-//	HEADER.style.border = '8px solid blue'
-//	TITLE.style.border = '1px solid pink'
-//	CATEGORIES.style.border = '1px solid white'
-//	CONTENT.style.border = '1px solid red'
-//	FOOTER.style.border = '1px solid yellow'
+	const frontpage = 'over'
+	document.getElementById(frontpage).click();
 
 }
 
 export function adjusted_content() {
 	let width = window.innerWidth
 	if(width < 500){
-		//CATEGORIES.style.display = 'inline' CATEGORIES.style.color = 'blue' FOOTER.style.fontSize = '0.5em'	
+		CATEGORIES.style.display = 'inline'
+		CATEGORIES.style.color = 'blue'
+		FOOTER.style.fontSize = '0.5em'	
 	} else {
 		//CATEGORIES.style.block = 'block'
 		//FOOTER.style.fontSize = '1em'	

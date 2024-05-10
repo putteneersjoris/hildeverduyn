@@ -3,12 +3,42 @@
   src: url('Jersey15Charted-Regular.ttf') format('truetype');
 }
 
-:root {
-  --first-font: 'Jersey', sans-serif;
+
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  src: url('Schibsted_Grotesk.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'CormorantGaramond-Regular';
+  src: url('CormorantGaramond-Regular.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'micro5charted-regular.ttf';
+  src: url('micro5charted-regular.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'JacquardaBastarda9Charted-Regular.ttf';
+  src: url('JacquardaBastarda9Charted-Regular.ttf') format('truetype');
+
+}
+
+:root {
+  --first-font: 'Jersey', sans-serif;
+  --second-font: 'Schibsted Grotesk', sans-serif;
+  --third-font: 'CormorantGaramond-Regular', sans-serif;
+  --fourth-font: 'Micro5Charted-Regular.ttf', sans-serif;
+  --fifth-font: 'JacquardaBastarda9Charted-Regular.ttf', sans-serif;
+}
+
+
+
 html {
-  font-family: var(--first-font);
+  font-family: var(--fifth-font);
 }
 
 #main{	
@@ -17,14 +47,14 @@ html {
 }
 
 
-#header{color:red
+#header{
+	height: 100px;
 
 }
 
 
 #title{
 	font-size: 4em;
-	color:red;
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -36,7 +66,6 @@ html {
 }
 
 #categories{
-	border: 20px solid green;
 	top: 0px;
 	right: 0px;
 	position: fixed;
@@ -44,88 +73,53 @@ html {
 
 
 #footer{
-	color:red;
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	padding: 10px;
-	border: 20px solid white;
 }
 
 
 #content{
-	background-color:green;
-	color:red;
 	margin: 0 auto;
-	width: 50%;
-}
-
-/* two :vertical stack */
-
-.one_container{
-	width: 100%;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-}
-
-.one_text{
-	width: 45%;
-	background-color:yellow;
-}
-
-.one_pics{
-	width: 45%;
-	background-color:pink;
-}
-
-.one_pic{
-	width: 45%;
+	width: 60%;
+	font-family: var(--second-font);
+	font-size: 0.8em;
 }
 
 
-/* two :vertical stack */
-
-.two_container {
-    width: 100%;
-    margin: 0 auto;
+#end{
+	height:200px;
 }
-
-.two_text,
-.two_pics {
-    width: 100%; 
-    background-color: pink;
-    margin-bottom: 20px;
-}
-
-.two_pic{
-	width: 100%;
+#begin{
+	height:100px;
 }
 
 
 
+button:hover{
+	text-decoration: underline;
 
-.three_container{
 }
-.two_text{
+button{
+	background: none;
+	border: none;
+	cursor: pointer;
 }
-.two_pics{
 
+/* google maps styling */
 
-
-.three_container{
+.google-map {
+  position: relative;
 }
-.two_text{
+
+.google-map iframe {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
 }
-.two_pics{
-
-
-
-
-
-
-
-
 
 
 

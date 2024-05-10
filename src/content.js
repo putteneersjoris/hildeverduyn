@@ -1,12 +1,13 @@
 const data = {
   "title": {
-    "text": "the <br> Cozy Cottage"
+    "text": "the <br> Cozy <br> Cottage"
   },
   "categories": {
     "over": {
       "text": "over",
       "id": "over",
-      "mode": "1",
+      "mode": "vertical",
+      "order": "1",
       "content": `
 	
 
@@ -48,13 +49,14 @@ const data = {
     "aanbod": {
       "text": "aanbod",
       "id": "aanbod",
-      "mode": "2",
+      "mode": "vertical",
+      "order": "0",
 	"content": `
 	
 
   <h2>Coworking</h2>
   <p>Voor grotere gezelschappen (vanaf 4 pers.) werken we samen met Convent³ te Eeklo.</p>
-  <p>Waarom zou je kiezen voor een coworkingruimte in Eeklo? Hier zijn een paar redenen waarom het de perfecte keuze kan zijn:</p>
+  <p>Waarom zou je kieZen voor een coworkingruimte in Eeklo? Hier zijn een paar redenen waarom het de perfecte keuze kan zijn:</p>
   <ul>
     <li>Inspirerende omgeving: Eeklo biedt een inspirerende omgeving met zijn prachtige natuurlijke landschappen en historische charme. Deze setting kan een stimulerende en creatieve sfeer creëren die bevorderlijk is voor productief werken.</li>
     <li>Gemeenschapsgevoel: In een coworkingruimte in Eeklo kun je deel uitmaken van een levendige en ondersteunende gemeenschap van gelijkgestemde professionals. Het delen van een werkruimte met anderen kan leiden tot waardevolle samenwerkingen, netwerkmogelijkheden en zelfs vriendschappen.</li>
@@ -106,30 +108,38 @@ const data = {
   </ul>
   <p>Kortom, de gezellige en intieme sfeer, gecombineerd met de privacy, gevarieerde ruimtes, inspirerende omgeving en flexibiliteit maken de Cozy Cottage een uitstekende locatie voor workshops van allerlei aard.</p>
 
-
-
-
 	`,
       "images": [
-        "./media/pics/5.jpg"
+        "./media/pics/5.jpg",
+        "./media/pics/5.jpg",
       ]
 
     },
     "fotos": {
       "text": "fotos",
       "id": "fotos",
-      "mode": "1",
-      "content": "foobar3 <b>test </b>",
+      "mode": "horizontal",
+      "content": "",
+      "order": "1",
       "images": [
-        "fotos3.jpg"
+        "./media/pics/5.jpg",
+        "./media/pics/5.jpg",
+        "./media/pics/5.jpg",
+        "./media/pics/5.jpg",
       ]
     },
     "contact": {
       "text": "contact",
       "id": "contact",
-      "mode": "1",
-      "content": "foobar4 <b>test </b>",
-      "images": [
+      "mode": "vertical",
+      "content": `
+	<h1>This is my Google Maps web page</h1>
+	<div class="google-map">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9998.899197193847!2d3.505790282034368!3d51.20572244177324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c366d404517e7d%3A0xa6dfcbc2605feb65!2sBalgerhoeke%2C%209900%20Eeklo!5e0!3m2!1sen!2sbe!4v1714423503697!5m2!1sen!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+	`,
+      "order": "0",
+       "images": [
         "./media/pics/1.jpg",
         "./media/pics/2.jpg",
         "./media/pics/3.jpg",
