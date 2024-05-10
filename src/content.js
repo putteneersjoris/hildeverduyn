@@ -135,7 +135,6 @@ const data = {
       "content": `
 	<h1>This is my Google Maps web page</h1>
 	<div class="google-map">
-         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9998.899197193847!2d3.505790282034368!3d51.20572244177324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c366d404517e7d%3A0xa6dfcbc2605feb65!2sBalgerhoeke%2C%209900%20Eeklo!5e0!3m2!1sen!2sbe!4v1714423503697!5m2!1sen!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
 	`,
       "order": "0",
@@ -146,11 +145,6 @@ const data = {
         "./media/pics/4.jpg",
         "./media/pics/5.jpg"
       ],
-      "adress": "123 Main Street, City, Country",
-      "name": "John Doe",
-      "number": "+1234567890",
-      "email": "john.doe@example.com",
-      "url": "/contact"
     }
   },	
   "footer": {

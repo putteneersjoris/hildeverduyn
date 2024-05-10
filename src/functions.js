@@ -3,6 +3,7 @@ import data from './content.js'
 const title = data.title.text
 const footer = data.footer.text
 
+const BODY = document.body
 const MAIN = document.getElementById('main')
 const HEADER = document.getElementById('header')
 const TITLE = document.getElementById('title')
@@ -11,6 +12,22 @@ const CONTENT = document.getElementById('content')
 const FOOTER = document.getElementById('footer')
 
 const ALT = 'airbnb and bed and breakfast in eeklo. Belgium'
+
+//set the syyling of the html tag, so there is a black/white version
+//console.log(window.matchMedia('(prefers-color-scheme: light )'))
+let colorscheme_value = 0
+function colorscheme(){
+
+	if(colorscheme_value % 2 === 0){
+		BODY.style.color = 'white';
+		BODY.style.backgroundColor = 'black';
+	} else  {
+		BODY.style.color = 'black';
+		BODY.style.backgroundColor = 'white';
+	}
+	colorscheme_value++
+}
+
 
 const array_categories = Object.keys(data.categories)
 const n_keys_categories = array_categories.length
@@ -44,10 +61,10 @@ function div_end(){
 	const end = document.createElement('div')
 	end.id = 'end'
 
-	const button_next = document.createElement('button')
-	button_next.innerHTML =  '<span>next</span>'
-	const button_previous = document.createElement('button')
-	button_previous.innerHTML =  '<span>previous</span>'
+	const button_next = document.createElement('span')
+	button_next.innerHTML =  'next'
+	const button_previous = document.createElement('span')
+	button_previous.innerHTML =  'previous</span>'
 	button_previous.onclick = function(){prev_or_next_category('prev')}
 	button_next.onclick = function(){prev_or_next_category('next')}
 	end.appendChild(button_previous)
@@ -76,7 +93,7 @@ function block(id, content, mode, images, order){
 	content_pics.classList.add('content_pics' + '_' + mode)
 	
 	//select all butons and set underline to none 
-	const buttons = document.querySelectorAll('button');
+	const buttons = document.querySelectorAll('span');
 
 	buttons.forEach(button => {
 	  button.style.textDecoration = 'none';
@@ -143,8 +160,14 @@ export function initial_content(){
 	FOOTER.innerHTML = footer + '-' + new Date().getFullYear()
 	
 	//constuct the categories
+	//append a colorscheme button
+	const button_colorscheme = document.createElement('span')
+	button_colorscheme.id = 'colorscheme'
+	button_colorscheme.innerHTML = '&bull;'
+	button_colorscheme.onclick = function(){colorscheme()}
+	CATEGORIES.appendChild(button_colorscheme)
 
-	
+
 	for(const category in data.categories){
 	
 		//content divs
@@ -155,30 +178,68 @@ export function initial_content(){
 		const order  = data.categories[category].order
 	
 		//categories
-		const button_category = document.createElement('button')
-		button_category.innerHTML = data.categories[category].text
+		const button_category = document.createElement('span')
+		button_category.innerHTML =data.categories[category].text 
 		button_category.onclick = function(){block( id, content , mode , images, order)}
 		button_category.className = 'category' 
 		button_category.id = id
 		CATEGORIES.appendChild(button_category)
 	}
+	
+	
 
 	// initial styling
+	//set initial frontage
 	const frontpage = 'over'
 	document.getElementById(frontpage).click();
-
 }
 
 export function adjusted_content() {
+
 	let width = window.innerWidth
+	let begin = document.getElementById('begin')
+	let end = document.getElementById('end')
+
+	console.log(width)
+
 	if(width < 500){
-		CATEGORIES.style.display = 'inline'
-		CATEGORIES.style.color = 'blue'
-		FOOTER.style.fontSize = '0.5em'	
+		TITLE.style.fontSize = "1em";
+		TITLE.style.position = "fixed";
+		TITLE.style.top = "0px";
+		TITLE.style.left = "50%";	
+		MAIN.style.padding = '10%'
+		HEADER.style.height = '100px'
+
+		FOOTER.style.position = 'fixed'
+		FOOTER.style.bottom = '0'
+		FOOTER.style.right = '0'
+		FOOTER.style.padding = '10px'
+	
+		begin.style.display = 'none'
+		begin.style.height = '100px'
+		end.style.height = '200px'
+
+
 	} else {
-		//CATEGORIES.style.block = 'block'
-		//FOOTER.style.fontSize = '1em'	
-	}
+
+		TITLE.style.fontSize = "4em";
+		TITLE.style.position = "fixed";
+		TITLE.style.top = "0px";
+		TITLE.style.left = "0px";	
+		MAIN.style.padding = '10%'
+
+		HEADER.style.height = '100px'
+
+		FOOTER.style.position = 'fixed'
+		FOOTER.style.bottom = '0'
+		FOOTER.style.right = '0'
+		FOOTER.style.padding = '10px'
+
+		begin.style.display = 'block'
+		begin.style.height = '100px'
+		end.style.height = '200px'
+		
+	}	
 }
 
 
