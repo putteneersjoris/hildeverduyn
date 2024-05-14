@@ -1,5 +1,5 @@
 import data from './content.js'
-
+	
 const title = data.title.text
 const footer = data.footer.text
 
@@ -14,10 +14,8 @@ const FOOTER = document.getElementById('footer')
 const ALT = 'airbnb and bed and breakfast in eeklo. Belgium'
 
 //set the syyling of the html tag, so there is a black/white version
-//console.log(window.matchMedia('(prefers-color-scheme: light )'))
 let colorscheme_value = 0
 function colorscheme(){
-
 	if(colorscheme_value % 2 === 0){
 		BODY.style.color = 'white';
 		BODY.style.backgroundColor = 'black';
@@ -26,6 +24,7 @@ function colorscheme(){
 		BODY.style.backgroundColor = 'white';
 	}
 	colorscheme_value++
+	console.log('colorscheme changed')
 }
 
 
@@ -53,7 +52,7 @@ function prev_or_next_category(prev_or_next){
 function div_begin(){
 	const begin = document.createElement('div')
 	begin.id = 'begin'
-	begin.innerHTML = 'begin testing'
+	//begin.innerHTML = 'begin testing'
 	return begin
 }
 
@@ -62,9 +61,9 @@ function div_end(){
 	end.id = 'end'
 
 	const button_next = document.createElement('span')
-	button_next.innerHTML =  'next'
+	button_next.innerHTML =  '→'
 	const button_previous = document.createElement('span')
-	button_previous.innerHTML =  'previous</span>'
+	button_previous.innerHTML =  '←'
 	button_previous.onclick = function(){prev_or_next_category('prev')}
 	button_next.onclick = function(){prev_or_next_category('next')}
 	end.appendChild(button_previous)
@@ -93,12 +92,12 @@ function block(id, content, mode, images, order){
 	content_pics.classList.add('content_pics' + '_' + mode)
 	
 	//select all butons and set underline to none 
-	const buttons = document.querySelectorAll('span');
-
-	buttons.forEach(button => {
-	  button.style.textDecoration = 'none';
-	});
-	document.getElementById(id).style.textDecoration='underline'
+//	const buttons = document.querySelectorAll('span');
+//
+//	buttons.forEach(button => {
+//	  button.style.textDecoration = 'none';
+//	});
+//	document.getElementById(id).style.textDecoration='underline'
 
 
 	for(const image of images){
@@ -107,7 +106,7 @@ function block(id, content, mode, images, order){
 		pic.alt = ALT
 		pic.classList.add('pic' + '_' + mode)
 		if(mode == 'vertical'){pic.style.width = '100%'}
-		if(mode == 'horizontal'){pic.style.width = '100%'}
+		if(mode == 'horizontal'){pic.style.width = '50%'}
 		content_pics.appendChild(pic)
 	}
 	
@@ -208,38 +207,65 @@ export function adjusted_content() {
 		TITLE.style.top = "0px";
 		TITLE.style.left = "50%";	
 		MAIN.style.padding = '10%'
-		HEADER.style.height = '100px'
+
+		HEADER.style.height = '10px'
 
 		FOOTER.style.position = 'fixed'
 		FOOTER.style.bottom = '0'
 		FOOTER.style.right = '0'
 		FOOTER.style.padding = '10px'
-	
-		begin.style.display = 'none'
-		begin.style.height = '100px'
-		end.style.height = '200px'
+
+		CONTENT.style.margin = '0 auto'
+		CONTENT.style.width = '100%'
+		CONTENT.style.fontSize = '0.5em'
+			
+		CATEGORIES.style.top = '0px'
+		CATEGORIES.style.right = '0px'
+		CATEGORIES.style.position = 'fixed'
+
+		//begin.style.display = 'none'
+		//begin.style.height = '10px'
+		//end.style.height = '200px'
 
 
 	} else {
 
-		TITLE.style.fontSize = "4em";
-		TITLE.style.position = "fixed";
-		TITLE.style.top = "0px";
-		TITLE.style.left = "0px";	
-		MAIN.style.padding = '10%'
+	//	TITLE.style.fontSize = "2em";
+	//	TITLE.style.position = "fixed";
+	//	TITLE.style.top = "0px";
+	//	TITLE.style.left = "0px";	
+	//	MAIN.style.padding = '10%'
 
-		HEADER.style.height = '100px'
+	//	HEADER.style.height = '10px'
 
-		FOOTER.style.position = 'fixed'
-		FOOTER.style.bottom = '0'
-		FOOTER.style.right = '0'
-		FOOTER.style.padding = '10px'
+	//	FOOTER.style.position = 'fixed'
+	//	FOOTER.style.bottom = '0'
+	//	FOOTER.style.right = '0'
+	//	FOOTER.style.padding = '10px'
 
-		begin.style.display = 'block'
-		begin.style.height = '100px'
+	//	CONTENT.style.margin = '0 auto'
+	//	CONTENT.style.width = '60%'
+	//	CONTENT.style.fontSize = '0.8em'
+	//			
+	//	CATEGORIES.style.top = '0px'
+	//	CATEGORIES.style.right = '0px'
+	//	CATEGORIES.style.position = 'fixed'
+
+	//	begin.style.display = 'block'
+	//	begin.style.height = '10px'
+
+
+		//previous and next page 
 		end.style.height = '200px'
+		end.style.position = 'fixed'
+		end.style.float = 'right'
+		end.style.fontSize = '4em'
+		end.style.right = '20px'
+		end.style.bottom = '20px'
+		end.style.margin = '20px'
+		end.style.border = '2px solid red'
 		
 	}	
 }
 
-
+//https://en.99designs.be/profiles/dsky/designs/445966

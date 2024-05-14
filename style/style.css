@@ -39,8 +39,10 @@
 
 html {
  	font-family: var(--fifth-font);
-}
+	
 
+
+}
 
 .category{
 	padding-right:30px;
@@ -48,26 +50,13 @@ html {
 	cursor:pointer;
 }
 
-#categories{
-	top: 0px;
-	right: 0px;
-	position: fixed;
-}
-
 
 #content{
-	margin: 0 auto;
-	width: 60%;
 	font-family: var(--second-font);
-	font-size: 0.8em;
 }
 
 
 
-span{
-	border: none;
-	cursor: pointer;
-}
 
 
 #colorscheme{
@@ -77,13 +66,15 @@ padding-right:20px;
 }
 
 
+#begin{
+	border: 1px solid red;
+}
 
 
+#header{
 
-
-
-
-
+	border: 1px solid red;
+}
 
 
 

@@ -115,7 +115,25 @@ const data = {
       ]
 
     },
-    "fotos": {
+    "text": {
+	"text": "text",
+      "id": "text",
+      "mode": "horizontal",
+      "content": "text ",
+      "order": "1",
+      "images": []
+    },
+   "startpage": {
+      "text": "startpage",
+      "id": "startpage",
+      "mode": "horizontal",
+      "content": "startpage",
+      "order": "1",
+      "images": [
+        "./media/pics/5.jpg",
+      ]
+    },
+   "fotos": {
       "text": "fotos",
       "id": "fotos",
       "mode": "horizontal",
