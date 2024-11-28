@@ -140,10 +140,10 @@ const data = {
       "content": "",
       "order": "1",
       "images": [
-        "./media/pics/5.jpg",
-        "./media/pics/5.jpg",
-        "./media/pics/5.jpg",
-        "./media/pics/5.jpg",
+        "./media/pics/1.jpg",
+        "./media/pics/2.jpg",
+        "./media/pics/3.jpg",
+        "./media/pics/4.jpg",
       ]
     },
     "contact": {
